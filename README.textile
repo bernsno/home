@@ -2,9 +2,13 @@ h1. Welcome to Eden
 
 This is a starter app.
 
-Here's a rundown of what your starting out with:
+h2. Here's a rundown of what your starting out with:
 
-h2. Submodules
+h3. Rails
+
+Rails is vendored to v2.2.2.
+
+h3. Vendored Plugins (submodule)
 
 # "newrelic_rpm":http://github.com/smtlaissezfaire/newrelic_rpm
 # "paperclip":http://github.com/thoughtbot/paperclip
@@ -13,11 +17,7 @@ h2. Submodules
 # "hoptoad_notifier":http://github.com/thoughtbot/hoptoad_notifier
 # "settingslogic":http://github.com/binarylogic/settingslogic
 
-h2. Rails
-
-Rails is vendored to v2.2.2.
-
-h2. Gem Plugins
+h3. Gem Plugins
 
 # "ryanb-acts-as-list":http://github.com/ryanb/acts-as-list/tree/master
 # "thoughtbot-shoulda":http://github.com/thoughtbot/shoulda/tree/master
