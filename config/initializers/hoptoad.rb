@@ -1,10 +1,5 @@
-# TODO:go to http://onedesigncompany.hoptoadapp.com/projects, make a new project,
-# copy initializer info into hoptoad.rb
-# add
-# 
-# include HoptoadNotifier::Catcher
-# 
-# to Application.rb
-# make sure it’s working:
-# 
-# rake hoptoad:test
+# Make a new project in Hoptoad, then insert the API key below.
+# Then rake hoptoad:test to make sure it works!
+HoptoadNotifier.configure do |config|
+  config.api_key = '12345'
+end
