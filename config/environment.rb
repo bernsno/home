@@ -27,8 +27,14 @@ Rails::Initializer.run do |config|
   end
 
   # Session
-  config.action_controller.session = {
-    :session_key => '_eden_session',
-    :secret      => '59d6fa68dc511ece8a06664bfd084f88e88d61eec92b2dd2f78964de6e19f1ac405eb7a2b09ce75a0bc48ca4bd72b06fa84f69ab357b75a53dcc290611802ad7'
-  }
+  # Thanks Blank (http://github.com/giraffesoft/blank/tree/)
+  session_config = "#{RAILS_ROOT}/config/session.rb"
+  File.exist?(session_config) ? load(session_config) : raise("Session file missing. Please run 'rake eden:session_config'.")
+  config.action_controller.session = SESSION_CONFIG
+
+  # Session
+  # config.action_controller.session = {
+  #   :session_key => '_eden_session',
+  #   :secret      => '59d6fa68dc511ece8a06664bfd084f88e88d61eec92b2dd2f78964de6e19f1ac405eb7a2b09ce75a0bc48ca4bd72b06fa84f69ab357b75a53dcc290611802ad7'
+  # }
 end

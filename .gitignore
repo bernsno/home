@@ -6,3 +6,5 @@ public/uploaded_files
 doc/api
 doc/app
 config/database.yml
+config/session.rb
+config/application.yml

@@ -9,8 +9,6 @@ require 'capistrano/ext/multistage'
 
   ### REPLACE ME ###
   set :application, "domain.com"
-  
-  ### REPLACE ME ###
   set :repository,  "github.repository"
 
 ##### SOURCE CONTROL #####
@@ -72,13 +70,21 @@ require 'capistrano/ext/multistage'
   # 
   desc "Create shared config and uploaded_files directories and a default database.yml."
   task :create_shared_config do
+    # create folders
     run "mkdir -p #{shared_path}/config"
     run "mkdir -p #{shared_path}/uploaded_files"
 
+    # Create DB file
     template = File.read(File.dirname(__FILE__) + "/database.yml.example")
     result   = ERB.new(template).result(binding)
     put result, "#{shared_path}/config/database.yml"
     puts "Please edit database.yml in the shared directory."
+    
+    # Create config file
+    template = File.read(File.dirname(__FILE__) + "/application.yml.example")
+    result   = ERB.new(template).result(binding)
+    put result, "#{shared_path}/config/application.yml"
+    puts "Please edit application.yml in the shared directory."
   end
   after "deploy:setup", "create_shared_config"
 
