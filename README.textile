@@ -8,14 +8,12 @@ h2. Rails
 
 Rails is vendored to v2.2.2.
 
-h2. Vendored Plugins (submodule)
+h2. Vendored Plugins (submodules)
 
 # "newrelic_rpm":http://github.com/smtlaissezfaire/newrelic_rpm
 # "paperclip":http://github.com/thoughtbot/paperclip
 # "google_ajax_api":http://github.com/rpheath/google_ajax_libraries_api
-# "authlogic":http://github.com/binarylogic/authlogic
 # "hoptoad_notifier":http://github.com/thoughtbot/hoptoad_notifier
-# "settingslogic":http://github.com/binarylogic/settingslogic
 
 h2. Gem Plugins
 
@@ -24,3 +22,5 @@ h2. Gem Plugins
 # "thoughtbot-factory_girl":http://github.com/thoughtbot/factory_girl/tree/master
 # "mislav-will_paginate":http://github.com/mislav/will_paginate/tree/master
 # "capistrano-ext":http://github.com/jamis/capistrano-ext/tree/master
+# "settingslogic":http://github.com/binarylogic/settingslogic
+# "authlogic":http://github.com/binarylogic/authlogic
