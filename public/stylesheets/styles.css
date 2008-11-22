@@ -8,3 +8,9 @@ body {
 	background-color:#fff;
 	color:#777;
 }
+
+#page_wrap {
+	margin:0 auto;
+	width:96em;
+	background-color:#ccc;
+}
