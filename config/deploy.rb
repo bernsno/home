@@ -82,7 +82,7 @@ require 'capistrano/ext/multistage'
   end
   after "deploy:setup", "create_shared_config"
 
-  ##### MAC OS X SSH SETTINGS #####
+##### MAC OS X SSH SETTINGS #####
   on :start do
     `ssh-add`
   end
