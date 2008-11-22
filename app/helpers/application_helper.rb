@@ -1,12 +1,16 @@
 module ApplicationHelper
+
+  def set_title(title)
+    @title = title
+  end
   
   def title
     title = Settings.site_name
     title += "- #{@title}" if @title
   end
   
-  def set_title(title)
-    @title = title
+  def body_class
+    controller.controller_path.gsub(/\//,'-').downcase
   end
   
   # Sensible flash messages
