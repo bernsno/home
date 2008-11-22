@@ -1,0 +1,15 @@
+defaults: &defaults
+  admin_email: matthooks@gmail.com
+  site_name: Site Name
+
+development:
+  <<: *defaults
+  site_url: http://url.local
+
+test:
+  <<: *defaults
+  site_url: http://url.local
+
+production:
+  <<: *defaults
+  site_url: http://url.remote

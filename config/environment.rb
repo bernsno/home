@@ -9,6 +9,8 @@ Rails::Initializer.run do |config|
   config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
   config.gem 'capistrano-ext', :lib => 'capistrano', :source => 'http://gems.github.com'
+  config.gem 'authlogic'
+  config.gem 'settingslogic'
   
   config.time_zone = 'UTC'
 

@@ -10,12 +10,6 @@
 [submodule "vendor/plugins/google_ajax_api"]
 	path = vendor/plugins/google_ajax_api
 	url = git://github.com/rpheath/google_ajax_libraries_api.git
-[submodule "vendor/plugins/authlogic"]
-	path = vendor/plugins/authlogic
-	url = git://github.com/binarylogic/authlogic.git
 [submodule "vendor/plugins/hoptoad_notifier"]
 	path = vendor/plugins/hoptoad_notifier
 	url = git://github.com/thoughtbot/hoptoad_notifier.git
-[submodule "vendor/plugins/settingslogic"]
-	path = vendor/plugins/settingslogic
-	url = git://github.com/binarylogic/settingslogic
