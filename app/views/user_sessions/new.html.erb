@@ -3,14 +3,14 @@
 <% form_for @user_session, :url => user_session_path do |f| %>
 	<%= f.error_messages %>
 	<div id="login_container"<% unless @user_session.openid_identifier.blank? %> style="display: none;"<% end %>>
-	<%= f.label :email %> (or <%= link_to_function "login using OpenID", "$('login_container').toggle(); $('openid_container').toggle();" %>)<br />
+	<%= f.label :email %> (or <%= link_to_function "login using OpenID", "$('#login_container').toggle(); $('#openid_container').toggle();" %>)<br />
 	<%= f.text_field :email %><br />
 	<br />
 	<%= f.label :password %><br />
 	<%= f.password_field :password %><br />
 	</div>
 	<div id="openid_container"<% if @user_session.openid_identifier.blank? %> style="display: none;"<% end %>>
-	<%= f.label :openid_identifier, "OpenID" %> (or <%= link_to_function "login using a standard username / password", "$('login_container').toggle(); $('openid_container').toggle();" %>)<br /><br />
+	<%= f.label :openid_identifier, "OpenID" %> (or <%= link_to_function "login using a standard username / password", "$('#login_container').toggle(); $('#openid_container').toggle();" %>)<br /><br />
 	<%= f.text_field :openid_identifier %><br />
 	</div>
 	<br />
