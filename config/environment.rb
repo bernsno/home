@@ -15,6 +15,9 @@ Rails::Initializer.run do |config|
   # Time zone
   config.time_zone = 'UTC'
 
+  # Make sure gem tasks get loaded?
+  # config.load_paths += Dir.glob(File.join(RAILS_ROOT, 'vendor', 'gems', '*', 'lib'))
+
   # Load factories
   config.after_initialize do
     %w(test spec).each do |dir|
