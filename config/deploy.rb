@@ -87,12 +87,6 @@ require 'capistrano/ext/multistage'
     result   = ERB.new(template).result(binding)
     put result, "#{shared_path}/config/application.yml"
     puts "Please edit application.yml to set up the app configuration."
-    
-    # Create session file
-    template = File.read(File.dirname(__FILE__) + "/session.rb.example")
-    result   = ERB.new(template).result(binding)
-    put result, "#{shared_path}/config/session.rb"
-    puts "Please edit session.rb to secure user sessions."
   end
   after "deploy:setup", "create_shared_config"
 

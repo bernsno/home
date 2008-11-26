@@ -1,9 +1,6 @@
 [submodule "vendor/rails"]
 	path = vendor/rails
 	url = git://github.com/rails/rails.git
-[submodule "vendor/plugins/newrelic_rpm"]
-	path = vendor/plugins/newrelic_rpm
-	url = git://github.com/smtlaissezfaire/newrelic_rpm.git
 [submodule "vendor/plugins/paperclip"]
 	path = vendor/plugins/paperclip
 	url = git://github.com/thoughtbot/paperclip.git
