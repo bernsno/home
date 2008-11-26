@@ -23,9 +23,8 @@ class Eden < Thor
     puts rake("eden:set_session_variables", :name => name)
     puts rake("eden:ignore_files")
     commit "Add generated session configuration."
-    
+
     # TODO: Rake task to create proper database.yml and application.yml files
-    
     # puts "\n- On the fourth day God made a database..."
     # puts rake(":db:create")
     # puts rake("db:schema:load")
