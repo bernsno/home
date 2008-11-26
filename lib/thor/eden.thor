@@ -21,7 +21,8 @@ class Eden < Thor
     
     puts "\n- On the third day God made this secret key..."
     rake "eden:set_session_variables", :name => name
-    commit "Add generated session configuration." if repo?
+    rake "eden:ignore_files"
+    commit "Add generated session configuration."
     
     # TODO: Rake task to create proper database.yml and application.yml files
     

@@ -22,6 +22,10 @@ namespace :eden do
     end
   end
   
+  task :ignore_files do
+    `cp .new_app.gitignore .gitignore`
+  end
+  
   task :create_default_admin_user => :environment do
     User.create!(:email => "admin@thesite.com", :password => "changeme", :password_confirmation => "changeme")
     puts "Default admin user created."

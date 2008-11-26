@@ -1,9 +1,8 @@
 log/*.log
 tmp/**/*
 doc/**/*
+public/uploaded_files
 .DS_Store
 public/cache/**/*
-public/uploaded_files
 config/database.yml
-config/session.rb
 config/application.yml
