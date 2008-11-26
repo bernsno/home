@@ -34,4 +34,9 @@ namespace :eden do
     User.create!(:email => "admin@thesite.com", :password => "changeme", :password_confirmation => "changeme")
     puts "Default admin user created."
   end
+  
+  task :update_eden do
+    'git merge eden/master'
+    'git fetch eden'
+  end
 end

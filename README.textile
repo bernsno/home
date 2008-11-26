@@ -26,3 +26,5 @@ h2. Gem Plugins
 # "authlogic":http://github.com/binarylogic/authlogic
 
 All gems and dependencies are vendored.
+
+h2. Starting a New Project
