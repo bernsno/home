@@ -8,7 +8,7 @@ class Eden < Thor
     @name = name
     @repo = repo
     
-    raise Thor::Error unless repo?
+    raise Thor::Error unless !repo?
     
     puts "- On the first day God made Eden..."
     `git clone -o eden #{EDEN_REPO} #{name}`
