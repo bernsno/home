@@ -13,3 +13,6 @@
 [submodule "vendor/plugins/open_id_authentication"]
 	path = vendor/plugins/open_id_authentication
 	url = git://github.com/rails/open_id_authentication.git
+[submodule "vendor/plugins/newrelic_rpm"]
+	path = vendor/plugins/newrelic_rpm
+	url = git://github.com/newrelic/rpm.git
