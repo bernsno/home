@@ -15,8 +15,7 @@ Rails::Initializer.run do |config|
   # Time zone
   config.time_zone = 'UTC'
 
-  # Make sure gem tasks get loaded?
-  # config.load_paths += Dir.glob(File.join(RAILS_ROOT, 'vendor', 'gems', '*', 'lib'))
+  # gem tasks are loaded in the Rakefile
 
   # Load factories
   config.after_initialize do
@@ -34,10 +33,4 @@ Rails::Initializer.run do |config|
   session_config = "#{RAILS_ROOT}/config/session.rb"
   File.exist?(session_config) ? load(session_config) : raise("Session file missing. Please run 'rake eden:session_config'.")
   config.action_controller.session = SESSION_CONFIG
-
-  # Session
-  # config.action_controller.session = {
-  #   :session_key => '_eden_session',
-  #   :secret      => '59d6fa68dc511ece8a06664bfd084f88e88d61eec92b2dd2f78964de6e19f1ac405eb7a2b09ce75a0bc48ca4bd72b06fa84f69ab357b75a53dcc290611802ad7'
-  # }
 end
