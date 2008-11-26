@@ -8,3 +8,5 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
+
+Dir["./vendor/gems/*/**/tasks/**/*.rake"].sort.each { |ext| load ext }
