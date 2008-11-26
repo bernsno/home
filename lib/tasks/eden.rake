@@ -1,5 +1,3 @@
-require 'erb'
-
 namespace :eden do
   task :set_project_origin do
     `git remote add origin #{ENV['REPO']}`
@@ -11,6 +9,8 @@ namespace :eden do
   end
   
   task :set_session_variables do
+    require 'erb'
+    
     @secret = ActiveSupport::SecureRandom.hex(130)
     @name   = ENV['NAME']
     

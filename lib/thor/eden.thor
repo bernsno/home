@@ -11,6 +11,7 @@ class Eden < Thor
     raise Thor::Error unless !repo?
     
     puts "- On the first day God made Eden..."
+    # TODO: puts around these for output?
     `git clone -o eden #{EDEN_REPO} #{name}`
     `cd #{name}; git submodule update --init`
     `cd #{name}; git checkout eden/#{branch}` unless branch.nil? || branch == ''
@@ -22,14 +23,16 @@ class Eden < Thor
     rake "eden:set_session_variables", :name => name
     commit "Add generated session configuration." if repo?
     
-    puts "\n- On the fourth day God made a database..."
-    rake "db:schema:load"
-    rake "db:test:prepare"
+    # TODO: Rake task to create proper database.yml and application.yml files
     
-    puts "\n- On the fifth day God made a man..."
-    puts rake "eden:create_default_admin_user"
+    # puts "\n- On the fourth day God made a database..."
+    # rake "db:schema:load"
+    # rake "db:test:prepare"
     
-    puts "\n- But he needed to rest so he left some TODOs..."
+    # puts "\n- On the fifth day God made a man..."
+    # puts rake "eden:create_default_admin_user"
+    
+    puts "\n- But then he needed to rest so he left some TODOs..."
     puts rake(:notes)
   end
   
