@@ -10,6 +10,7 @@ Rails::Initializer.run do |config|
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
   config.gem 'capistrano-ext', :lib => 'capistrano', :source => 'http://gems.github.com'
   config.gem 'authlogic'
+  config.gem 'ruby-openid', :lib => 'openid'
   config.gem 'settingslogic'
   
   # Time zone

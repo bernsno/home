@@ -1,5 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resource :account, :controller => 'admin/users'
   map.resources :users
   
   map.resources :password_resets
@@ -12,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'user_sessions', :action => 'new'
   
   map.namespace :admin do |admin|
+    admin.resource :account, :controller => 'users'
     admin.resources :users
   end
   
