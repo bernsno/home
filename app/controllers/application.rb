@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
       if current_user
         store_location
         flash[:notice] = "You need to log out before you can access this page."
-        redirect_to account_url
+        redirect_to admin_account_url
         return false
       end
     end
