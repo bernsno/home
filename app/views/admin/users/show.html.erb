@@ -10,6 +10,7 @@
   </p>
 <% end %>
 <p>
+	<%= image_tag(@user.gravatar_url) %>
   <b>Email:</b>
   <%=h @user.email %>
 </p>
@@ -45,4 +46,4 @@
 </p>
 
 
-<%= link_to 'Edit', edit_account_path %>
+<%= link_to 'Edit', edit_admin_account_path %>
