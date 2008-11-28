@@ -13,7 +13,8 @@ class Eden < Thor
     puts "- On the first day God made Eden..."
     # TODO: puts around these for output?
     `git clone -o eden #{EDEN_REPO} #{name}`
-    `cd #{name}; git submodule update --init`
+    `cd #{name}; git submodule init`
+    `cd #{name}; git submodule update`
     `cd #{name}; git checkout eden/#{branch}` unless branch.nil? || branch == ''
     
     puts "\n- On the second day God made #{name}..."
