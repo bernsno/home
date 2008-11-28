@@ -37,7 +37,7 @@ namespace :eden do
   
   desc "Creates a default admin user for a new Eden project."
   task :new_user => :environment do
-    User.create!(:email => "admin@thesite.com", :password => "changeme", :password_confirmation => "changeme", :active => "true")
+    User.create!(:email => "admin@thesite.com", :password => "changeme", :password_confirmation => "changeme", :active => true)
     puts "Default admin user created."
     puts "email: admin@thesite.com"
     puts "password: changeme"
