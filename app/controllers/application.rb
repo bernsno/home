@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
       unless current_user
         store_location
         flash[:notice] = "You need to log in before you can access this page."
-        redirect_to new_user_session_url
+        redirect_to login_url
         return false
       end
     end
