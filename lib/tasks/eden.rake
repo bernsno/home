@@ -14,9 +14,8 @@ namespace :eden do
     require 'erb'
     
     @secret = ActiveSupport::SecureRandom.hex(130)
-    
     if ENV['NAME']
-      @name   = ENV['NAME']
+      @name = ENV['NAME']
     else
       @name = "REPLACE_ME"
     end
