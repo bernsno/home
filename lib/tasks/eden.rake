@@ -14,14 +14,20 @@ namespace :eden do
     require 'erb'
     
     @secret = ActiveSupport::SecureRandom.hex(130)
-    @name   = ENV['NAME']
     
-    puts @secret
-    
+    if ENV['NAME']
+      @name   = ENV['NAME']
+    else
+      @name = "REPLACE_ME"
+    end
+
     result = ERB.new(File.read(File.dirname(__FILE__)+'/../templates/session.rb.erb')).result(binding)
     File.open(File.dirname(__FILE__)+'/../../config/session.rb', 'w') do |f|
       f << result
     end
+    
+    puts ":session_key => _#{@name}_session"
+    puts ":secret => #{@secret}"
   end
   
   desc "Sets up a proper .gitignore for a new Eden project."
@@ -30,9 +36,11 @@ namespace :eden do
   end
   
   desc "Creates a default admin user for a new Eden project."
-  task :create_default_admin_user => :environment do
-    User.create!(:email => "admin@thesite.com", :password => "changeme", :password_confirmation => "changeme")
+  task :new_user => :environment do
+    User.create!(:email => "admin@thesite.com", :password => "changeme", :password_confirmation => "changeme", :active => "true")
     puts "Default admin user created."
+    puts "email: admin@thesite.com"
+    puts "password: changeme"
   end
 
   desc "Grabs the latest changes from the Eden repository."
