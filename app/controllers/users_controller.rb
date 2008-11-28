@@ -6,12 +6,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    # @user = User.new(params[:user])
-    
     # Only allow users to specify their e-mail at this stage.
     # Don't want them to set pw or openid yet
     @user = User.new
-    @user.email = params[:user][:email]
+    @user.signup!(params)
     
     # Saving without session maintenance to skip
     # auto-login which can't happen here because

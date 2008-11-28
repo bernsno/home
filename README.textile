@@ -30,4 +30,4 @@ All gems and dependencies are vendored.
 
 h2. Thanks
 
-Thanks to "Bort":http://github.com/fudgestudios/bort/tree/master, "Blank":http://github.com/giraffesoft/blank/tree/master, "Suspenders":http://github.com/thoughtbot/suspenders/tree/master for inspiration and best practices. Let us "run in packs":http://railspikes.com/2008/11/19/running-in-packs-vs-going-it-alone.
+Thanks to "Bort":http://github.com/fudgestudios/bort/tree/master, "Blank":http://github.com/giraffesoft/blank/tree/master, "Suspenders":http://github.com/thoughtbot/suspenders/tree/master for inspiration and best practices. May we all "run in packs":http://railspikes.com/2008/11/19/running-in-packs-vs-going-it-alone.

@@ -9,21 +9,11 @@ class User < ActiveRecord::Base
   validate :normalize_openid_identifier
   validates_uniqueness_of :openid_identifier, :allow_blank => true
   
-  # For acts_as_authentic configuration
-  def openid_identifier_blank?
-    openid_identifier.blank?
-  end
-  
-  # TODO: Better way to do this than @new_record.nil?
-  # Also, why does self.new_record? return nil instead of false?
-  def has_no_credentials?
-    @new_record.nil? && self.crypted_password.blank? && self.openid_identifier.blank?
-  end
-  
   named_scope :active, :conditions => { :active => true }, :order => "created_at DESC"
   
-  def active?
-    active
+  # User creation/activation
+  def signup!(params)
+    self.email = params[:user][:email]
   end
   
   def activate!(params)
@@ -33,6 +23,16 @@ class User < ActiveRecord::Base
     self.openid_identifier = params[:user][:openid_identifier]
   end
   
+  # Conditionals for authlogic configuration
+  def openid_identifier_blank?
+    openid_identifier.blank?
+  end
+  
+  def has_no_credentials?
+    self.crypted_password.blank? && self.openid_identifier.blank?
+  end
+  
+  # Email notifications
   def deliver_password_reset_instructions!
     reset_perishable_token!
     Notifier.deliver_password_reset_instructions(self)
@@ -46,6 +46,11 @@ class User < ActiveRecord::Base
   def deliver_activation_confirmation!
     reset_perishable_token!
     Notifier.deliver_activation_confirmation(self)
+  end
+  
+  # Helper methods
+  def active?
+    active
   end
   
   private
