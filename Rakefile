@@ -9,4 +9,5 @@ require 'rake/rdoctask'
 
 require 'tasks/rails'
 
+# Load frozen gem tasks
 Dir["./vendor/gems/*/**/tasks/**/*.rake"].sort.each { |ext| load ext }
