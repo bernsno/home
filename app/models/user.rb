@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   # User creation/activation
   def signup!(params)
     self.email = params[:user][:email]
+    # TODO: Better way to handle non-null remember_token?
+    self.remember_token = self.class.unique_token
+    save_without_session_maintenance
   end
   
   def activate!(params)
@@ -21,6 +24,7 @@ class User < ActiveRecord::Base
     self.password = params[:user][:password]
     self.password_confirmation = params[:user][:password_confirmation]
     self.openid_identifier = params[:user][:openid_identifier]
+    save
   end
   
   # Conditionals for authlogic configuration

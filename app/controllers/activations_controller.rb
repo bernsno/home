@@ -15,10 +15,10 @@ class ActivationsController < ApplicationController
     # has already activated to re-activate
     # TODO: Cleanup comment and raise better exception
     raise ActiveRecord::RecordNotFound if @user.active?
-    @user.activate!(params)
 
-    if @user.save
+    if @user.activate!(params)
       @user.deliver_activation_confirmation!
+      flash[:notice] = "Your account has been activated."
       redirect_to admin_account_url
     else
       render :action => :new
