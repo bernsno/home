@@ -29,6 +29,23 @@ namespace :eden do
     puts ":secret => #{@secret}"
   end
   
+  
+  # Should this also make the db?
+  desc "Creates a database.yml file with default mysql setup."
+  task :setup_database_yml do
+    require 'erb'
+    
+    if ENV['NAME']
+      @name = ENV['NAME']
+      result = ERB.new(File.read(File.dirname(__FILE__)+'/../templates/database.yml.erb')).result(binding)
+      File.open(File.dirname(__FILE__)+'/../../config/database.yml', 'w') do |f|
+        f << result
+      end
+    else
+      puts "requires database name for database.yml"
+    end
+  end
+  
   desc "Sets up a proper .gitignore for a new Eden project."
   task :ignore_files do
     `cp .new_app.gitignore .gitignore`
