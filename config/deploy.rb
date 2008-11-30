@@ -39,8 +39,10 @@ require 'capistrano/ext/multistage'
 ##### TASKS #####
   after "deploy", "deploy:cleanup"
 
+  desc "Streams the (production|error|access) log."
   task :tail_log, :roles => :app do
-    stream "tail -f #{shared_path}/log/production.log"
+    file = ENV['FILE'] || 'production'
+    stream "tail -f #{shared_path}/log/#{file}.log"
   end
 
   # Redefine deploy task for use with Passenger
@@ -57,20 +59,21 @@ require 'capistrano/ext/multistage'
   end
 
   # Copy any config files into the production directories
-  desc "Copy config files"
+  desc "Copies configuration files into the current release."
   task :copy_config_files do
     run "cp #{shared_path}/config/* #{release_path}/config/"
   end
   after "deploy:update_code", "copy_config_files"
 
   # Symlink any uploaded files
+  desc "Symlinks uploaded files into the current release."
   task :copy_symlinks do
     run "ln -nfs #{shared_path}/uploaded_files #{current_path}/public/uploaded_files"
   end
   after "deploy:symlink", "copy_symlinks"
 
   # 
-  desc "Create shared config and uploaded_files directories and a default database.yml."
+  desc "Creates shared configuration and upload directories and default yml files."
   task :create_shared_config do
     # create folders
     run "mkdir -p #{shared_path}/config"
