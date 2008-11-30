@@ -58,34 +58,31 @@ require 'capistrano/ext/multistage'
     end
   end
 
-  # Copy any config files into the production directories
   desc "Copies configuration files into the current release."
   task :copy_config_files do
     run "cp #{shared_path}/config/* #{release_path}/config/"
   end
   after "deploy:update_code", "copy_config_files"
 
-  # Symlink any uploaded files
   desc "Symlinks uploaded files into the current release."
   task :copy_symlinks do
     run "ln -nfs #{shared_path}/uploaded_files #{current_path}/public/uploaded_files"
   end
   after "deploy:symlink", "copy_symlinks"
 
-  # 
   desc "Creates shared configuration and upload directories and default yml files."
   task :create_shared_config do
-    # create folders
+    # Create folders
     run "mkdir -p #{shared_path}/config"
     run "mkdir -p #{shared_path}/uploaded_files"
 
-    # Create DB file
+    # Create database configuration
     template = File.read(File.dirname(__FILE__) + "/database.yml.example")
     result   = ERB.new(template).result(binding)
     put result, "#{shared_path}/config/database.yml"
     puts "Please edit database.yml to set up the database."
     
-    # Create config file
+    # Create application configuration
     template = File.read(File.dirname(__FILE__) + "/application.yml.example")
     result   = ERB.new(template).result(binding)
     put result, "#{shared_path}/config/application.yml"
