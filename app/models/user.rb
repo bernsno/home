@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-  # TODO: Set proper attr_accessible
-  # attr_accessible :email, :password, :password_confirmation, :openid_identifier
+  attr_accessible :email, :password, :password_confirmation, :openid_identifier
   
   acts_as_authentic :login_field_validation_options => { :if => :openid_identifier_blank? },
                     :password_field_validation_options => { :if => :openid_identifier_blank? },
