@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   
   acts_as_authentic :login_field_validation_options => { :if => :openid_identifier_blank? },
                     :password_field_validation_options => { :if => :openid_identifier_blank? },
-                    :password_field_validates_presence_of_options => { :on => :update, :if => :has_no_credentials? }
+                    :password_field_validates_length_of_options => { :on => :update, :if => :has_no_credentials? }
   
   validate :normalize_openid_identifier
   validates_uniqueness_of :openid_identifier, :allow_blank => true
@@ -13,8 +13,6 @@ class User < ActiveRecord::Base
   # User creation/activation
   def signup!(params)
     self.email = params[:user][:email]
-    # TODO: Better way to handle non-null remember_token?
-    self.remember_token = self.class.unique_token
     save_without_session_maintenance
   end
   
