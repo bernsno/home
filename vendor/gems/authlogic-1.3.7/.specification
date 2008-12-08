@@ -1,7 +1,7 @@
 --- !ruby/object:Gem::Specification 
 name: authlogic
 version: !ruby/object:Gem::Version 
-  version: 1.3.6
+  version: 1.3.7
 platform: ruby
 authors: 
 - Ben Johnson of Binary Logic
@@ -9,7 +9,7 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2008-11-29 00:00:00 -06:00
+date: 2008-11-30 00:00:00 -06:00
 default_executable: 
 dependencies: 
 - !ruby/object:Gem::Dependency 
@@ -67,11 +67,14 @@ extra_rdoc_files:
 - lib/authlogic/session/perishability.rb
 - lib/authlogic/session/scopes.rb
 - lib/authlogic/session/session.rb
+- lib/authlogic/testing/test_unit_helpers.rb
 - lib/authlogic/version.rb
 - lib/authlogic.rb
 - README.rdoc
 files: 
 - CHANGELOG.rdoc
+- generators/session/session_generator.rb
+- generators/session/templates/session.rb
 - init.rb
 - lib/authlogic/controller_adapters/abstract_adapter.rb
 - lib/authlogic/controller_adapters/merb_adapter.rb
@@ -100,6 +103,7 @@ files:
 - lib/authlogic/session/perishability.rb
 - lib/authlogic/session/scopes.rb
 - lib/authlogic/session/session.rb
+- lib/authlogic/testing/test_unit_helpers.rb
 - lib/authlogic/version.rb
 - lib/authlogic.rb
 - Manifest
