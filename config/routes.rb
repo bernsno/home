@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Activation
   map.register '/register/:activation_code', :controller => 'activations', :action => 'new'
-  map.activate '/activate/:id', :controller => 'activations', :action => 'create'
+  map.activate '/activate/:activation_code', :controller => 'activations', :action => 'create'
 
   # Sessions
   map.resource :user_session

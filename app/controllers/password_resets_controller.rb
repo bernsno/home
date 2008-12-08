@@ -9,7 +9,7 @@ class PasswordResetsController < ApplicationController
   def create
     @user = User.find_by_email(params[:email])
     if @user
-      @user.deliver_password_reset_instructions!
+      @user.deliver_perishable_email!(:password_reset_instructions)
       flash[:notice] = "Check your email for password reset instructions."
       redirect_to root_url
     else

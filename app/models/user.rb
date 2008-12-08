@@ -10,10 +10,12 @@ class User < ActiveRecord::Base
   
   named_scope :active, :conditions => { :active => true }, :order => "created_at DESC"
   
+  after_create :deliver_activation_instructions!
+  
   # User creation/activation
   def signup!(params)
     self.email = params[:user][:email]
-    save_without_session_maintenance
+    save
   end
   
   def activate!(params)
@@ -34,19 +36,13 @@ class User < ActiveRecord::Base
   end
   
   # Email notifications
-  def deliver_password_reset_instructions!
+  def deliver_perishable_email!(email)
     reset_perishable_token!
-    Notifier.deliver_password_reset_instructions(self)
+    Notifier.send("deliver_#{email}".to_sym, self)
   end
   
   def deliver_activation_instructions!
-    reset_perishable_token!
-    Notifier.deliver_activation_instructions(self)
-  end
-  
-  def deliver_activation_confirmation!
-    reset_perishable_token!
-    Notifier.deliver_activation_confirmation(self)
+    self.deliver_perishable_email!(:activation_instructions)
   end
   
   # Helper methods

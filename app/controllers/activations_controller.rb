@@ -1,28 +1,30 @@
 class ActivationsController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
-  
+  before_filter :load_and_verify_user, :only => [:new, :create]
+
   def new
-    # TODO: Friendly message for if token is expired? i.e. never got your activation code?
-    @user = User.find_using_perishable_token(params[:activation_code], 1.week) || (raise ActiveRecord::RecordNotFound)
-    # TODO: Do I need this or something like it?
-    raise ActiveRecord::RecordNotFound if @user.active?
+    render
   end
 
   def create
-    @user = User.find(params[:id])
-    
-    # For security reasons, don't allow someone who
-    # has already activated to re-activate
-    # TODO: Cleanup comment and raise better exception
-    raise ActiveRecord::RecordNotFound if @user.active?
-
     if @user.activate!(params)
-      @user.deliver_activation_confirmation!
+      @user.deliver_perishable_email!(:activation_confirmation)
       flash[:notice] = "Your account has been activated."
-      redirect_to admin_account_url
+      redirect_to account_url
     else
       render :action => :new
     end
   end
+
+  private
+  
+    def load_and_verify_user
+      @user = User.find_using_perishable_token(params[:activation_code], 1.week)
+      
+      if @user.nil? || @user.active?
+        flash[:error] = "We could not locate your account."
+        redirect_to root_path and return
+      end
+    end
 
 end
