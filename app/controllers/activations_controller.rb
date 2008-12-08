@@ -10,7 +10,7 @@ class ActivationsController < ApplicationController
     if @user.activate!(params)
       @user.deliver_perishable_email!(:activation_confirmation)
       flash[:notice] = "Your account has been activated."
-      redirect_to account_url
+      redirect_to admin_account_url
     else
       render :action => :new
     end
