@@ -1,9 +1,6 @@
 [submodule "vendor/rails"]
 	path = vendor/rails
 	url = git://github.com/rails/rails.git
-[submodule "vendor/plugins/paperclip"]
-	path = vendor/plugins/paperclip
-	url = git://github.com/thoughtbot/paperclip.git
 [submodule "vendor/plugins/google_ajax_api"]
 	path = vendor/plugins/google_ajax_api
 	url = git://github.com/rpheath/google_ajax_libraries_api.git

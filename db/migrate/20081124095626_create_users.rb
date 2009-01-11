@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email, :default => "", :null => false
       t.string :crypted_password, :default => nil, :null => true
       t.string :password_salt, :default => nil, :null => true
-      t.string :remember_token, :null => false
+      t.string :persistence_token, :null => false
       t.integer :login_count, :default => 0, :null => false
       t.datetime :last_request_at
       t.datetime :last_login_at
@@ -19,9 +19,10 @@ class CreateUsers < ActiveRecord::Migration
     end
     
     add_index :users, :email
-    add_index :users, :remember_token
+    add_index :users, :persistence_token
     add_index :users, :perishable_token
     add_index :users, :openid_identifier
+    add_index :users, :last_request_at
   end
 
   def self.down
