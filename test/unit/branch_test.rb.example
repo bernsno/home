@@ -1,0 +1,31 @@
+require File.dirname(__FILE__) + '/../test_helper'
+
+class BranchTest < ActiveSupport::TestCase
+  UPLOAD_LIMIT = 5
+  
+  should_require_attributes :name, :address, :color
+  
+  should_allow_values_for :color, "333", "ffffff"
+  should_not_allow_values_for :color, "gg", "1", "aspdofkaspdf", "#333", "#666666"
+  
+  # TODO: should_should_allow_values_for :address
+  
+  should_have_many :people
+  should_have_many :clients
+  should_have_many :blog_posts
+  should_have_many :pages
+  should_have_many :samples
+  should_have_many :services
+  should_have_many :users
+  
+  context "a branch" do
+    setup do
+      @branch = Factory(:branch)
+    end
+    
+    should_have_attached_file :logo
+    should_validate_attachment_presence :logo
+    should_validate_attachment_content_type :logo, :valid => ["image/jpeg", "image/png", "image/gif", "image/pjpeg", "image/x-png"]
+    should_validate_attachment_size :logo, :in => 1..UPLOAD_LIMIT.megabytes
+  end
+end
