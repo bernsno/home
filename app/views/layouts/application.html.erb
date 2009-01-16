@@ -8,8 +8,7 @@
 		
 		<%= stylesheet_link_tag 'reset', 'rails_errors', 'styles' %>
 		<%= google_jquery %>
-
-		<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+		<%= auth_token %>
 		<%= yield :head %>
 		
 		<link rel="shortcut icon" href="/favicon.ico" />
@@ -18,7 +17,6 @@
 		
 		<div id="page_wrap">
 			<%= flash_helper %>
-			
 			<%= yield %>
 		</div>
 		

@@ -1,6 +1,7 @@
 defaults: &defaults
   admin_email: matthooks@gmail.com
   site_name: Eden
+  google_analytics: fake_string
 
 development:
   <<: *defaults
