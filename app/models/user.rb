@@ -1,15 +1,20 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :openid_identifier
   
+  # AUTHLOGIC
   acts_as_authentic :login_field_validation_options => { :if => :openid_identifier_blank? },
                     :password_field_validation_options => { :if => :openid_identifier_blank? },
                     :password_field_validates_length_of_options => { :on => :update, :if => :has_no_credentials? }
   
+  # VALIDATIONS
   validate :normalize_openid_identifier
   validates_uniqueness_of :openid_identifier, :allow_blank => true
   
-  named_scope :active, :conditions => { :active => true }, :order => "created_at DESC"
+  # NAMED SCOPES
+  named_scope :active, :conditions => { :active => true }
+  named_scope :by_created_at, :order => "created_at DESC"
   
+  # CALLBACKS
   after_create :deliver_activation_instructions!
   
   # User creation/activation
@@ -47,9 +52,9 @@ class User < ActiveRecord::Base
   
   # Helper methods
   def active?
-    active
+    active == true
   end
-  
+
   private
 
     def normalize_openid_identifier

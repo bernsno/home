@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20081124103134) do
     t.string   "email",             :default => "",    :null => false
     t.string   "crypted_password"
     t.string   "password_salt"
-    t.string   "remember_token",    :default => "",    :null => false
+    t.string   "persistence_token", :default => "",    :null => false
     t.integer  "login_count",       :default => 0,     :null => false
     t.datetime "last_request_at"
     t.datetime "last_login_at"
@@ -45,8 +45,9 @@ ActiveRecord::Schema.define(:version => 20081124103134) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
   add_index "users", ["openid_identifier"], :name => "index_users_on_openid_identifier"
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
-  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 
 end
