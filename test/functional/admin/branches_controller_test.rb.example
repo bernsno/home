@@ -1,0 +1,112 @@
+require File.dirname(__FILE__) + '/../../test_helper'
+require 'admin/branches_controller'
+
+class Admin::BranchesControllerTest < ActionController::TestCase
+
+  context "as an admin" do
+
+    setup do
+      set_session_for(users(:admin))    
+    end
+    
+    context "new" do
+       setup do
+         get :new
+       end
+
+       should_assign_to :branch
+       should_respond_with :success
+       should_render_template :new
+       should_not_set_the_flash
+     end
+     
+     context "create" do
+         context "valid" do
+           setup do
+             post :create, :branch => Factory.attributes_for(:branch)
+           end
+
+           should_redirect_to "admin_branches_path"
+           should_assign_to :branch
+           should_set_the_flash_to /created/i
+           should_change 'Branch.count', :by => 1
+         end
+
+         context "invalid" do
+           setup do
+             post :create, :branch => Factory.attributes_for(:invalid_branch)
+           end
+
+           should_not_set_the_flash
+           should_render_template :new
+           should_assign_to :branch
+           should_not_change 'Branch.count'
+         end
+       end
+
+     context "with a record" do
+
+       setup do
+         @branch = Factory(:branch)
+       end
+
+       context "index" do
+         setup do
+           get :index
+         end
+         should_assign_to :branches
+         should_respond_with :success
+         should_render_template :index
+         should_not_set_the_flash
+       end
+       
+       context "edit" do
+         setup do
+           get :edit, :id => @branch.to_param
+         end
+
+         should_assign_to :branch
+         should_respond_with :success
+         should_render_template :edit
+         should_not_set_the_flash
+       end
+       
+
+       context "update" do
+           context "valid" do
+             setup do
+               put :update, :id => @branch.to_param, :branch => { :name => "Nashville" }
+             end
+
+             should_redirect_to "admin_branches_path"
+             should_assign_to :branch
+             should_set_the_flash_to /updated/i
+           end
+
+           context "invalid" do
+             setup do
+               put :update, :id => @branch.to_param, :branch => { :name => "" }
+             end
+
+             should_assign_to :branch
+             should_render_template :edit
+           end
+         end
+
+         context "destroy" do
+           setup do
+             delete :destroy, :id => @branch.to_param
+           end
+
+           should_assign_to :branch
+           should_redirect_to "admin_branches_path"
+           should_respond_with :found
+           should_change 'Branch.count', :by => -1
+         end
+
+     end
+    
+  end
+  
+    
+end

@@ -1,0 +1,11 @@
+Factory.define :branch do |b|
+  b.name "Chicago"
+  b.address "1345 W. Walton St."
+  b.color "ffacac"
+end
+
+Factory.define :invalid_branch do |b|
+  b.name ""
+  b.address ""
+  b.color ""
+end
