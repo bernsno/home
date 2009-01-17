@@ -15,8 +15,9 @@ ActionController::Routing::Routes.draw do |map|
 
   # Admin
   map.namespace :admin do |admin|
-    admin.resource :account, :controller => 'users'
     admin.resources :users
+    
+    admin.root :controller => "users"
   end
 
   # Root

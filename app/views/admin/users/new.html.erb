@@ -1,0 +1,5 @@
+<p class="actions"><%= link_to 'Back', admin_users_path %></p>
+
+<% form_for(@user, :url => admin_users_path, :html => { :class => "vertical" }) do |f| %>
+	<%= render :partial => "new_form", :locals => { :f => f, :button_text => "Create", :header_text => "New" } %>
+<% end %>

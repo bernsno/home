@@ -13,7 +13,7 @@ class UserSessionsController < ApplicationController
       if result
         # No need for login flash, it should be obvious...
         # flash[:notice] = "Login successful!"
-        redirect_back_or_default admin_account_url
+        redirect_back_or_default admin_root_path
       else
         render :action => :new
       end

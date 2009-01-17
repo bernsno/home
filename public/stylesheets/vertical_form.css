@@ -1,0 +1,28 @@
+form.vertical {}
+	form.vertical fieldset {}
+	form.vertical legend {}
+		form.vertical ol {}
+			form.vertical li { padding:0.5em 0; }
+				form.vertical label {
+					display:block;
+					font-size:1.6em;
+					font-family:Georgia, 'Palatino', 'Palatino Linotype', Times, 'Times New Roman', serif;
+					margin-bottom:0.5em;
+				}
+					form.vertical label.checkbox {
+						display:inline;
+						vertical-align:bottom;
+					}
+					form.vertical textarea,
+					form.vertical input {
+						font-size:1.6em;
+						width:75%;
+					}
+					form.vertical input.submit {
+						margin-top:1em;
+						font-size:2em;
+						width:auto;
+					}
+				form.vertical img { margin:1em 0; }
+
+.dark { background-color:#DADCC3; }

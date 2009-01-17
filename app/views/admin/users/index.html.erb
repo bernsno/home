@@ -1,0 +1,24 @@
+<h2>Users</h2>
+<p class="actions"><%=link_to "New User", new_admin_user_path %></p>
+
+<ul>
+	<% @users.each do |user| %>
+	<li>
+		<h3>
+			<%=link_to h(user.email), admin_user_path(user) %>
+		</h3>
+		<p class="actions">
+			<% if user == current_user %>
+				<%=link_to "edit your profile", edit_admin_user_path(user) %>
+			<% end %>
+			<%=link_to "delete",  admin_user_path(user), :confirm => 'Are you sure?', :method => :delete %>
+		</p>
+		<div class="admin_content_body">
+			<p>
+				Last login: <%= user.last_login_at.nil? ? "never" : user.last_login_at.to_s(:long)  %>
+			</p>
+		</div>
+	</li>
+	<% end %>
+</ul>
+<%= will_paginate @users %>

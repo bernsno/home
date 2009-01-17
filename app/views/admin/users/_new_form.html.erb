@@ -1,0 +1,17 @@
+<%= f.error_messages %>
+<fieldset>
+	<legend><%= header_text %> Admin</legend>
+	<p>
+		The new admin will receive an e-mail containing their activation code. They will not be able to log in until they have activated and set their password and/or OpenID.
+	</p>
+	<ol>
+		<li>
+			<%= f.label :email %>
+			<%= f.text_field :email %>
+		</li>
+		<li>
+			<%= f.label "" %>
+			<%= f.submit button_text, :class => "submit" %>
+		</li>
+	</ol>
+</fieldset>

@@ -1,12 +1,26 @@
-<%= form.label :email %><br />
-<%= form.text_field :email %><br />
-<br />
-<%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
-<%= form.password_field :password %><br />
-<br />
-<%= form.label :password_confirmation %><br />
-<%= form.password_field :password_confirmation %><br />
-<br />
-<%= form.label :openid_identifier, "Or use OpenID instead of a standard login / password" %><br />
-<%= form.text_field :openid_identifier %><br />
-<br />
+<%= f.error_messages %>
+<fieldset>
+	<legend><%= header_text %> User</legend>
+	<ol>
+		<li>
+			<%= f.label :email %>
+			<%= f.text_field :email %>
+		</li>
+		<li>
+			<%= f.label :password, f.object.new_record? ? nil : "Change password" %>
+			<%= f.password_field :password %>
+		</li>
+		<li>
+			<%= f.label :password_confirmation %>
+			<%= f.password_field :password_confirmation %>
+		</li>
+		<li>
+			<%= f.label :openid_identifier, "Or use OpenID instead of a standard login / password" %>
+			<%= f.text_field :openid_identifier %>
+		</li>
+		<li>
+			<%= f.label "" %>
+			<%= f.submit button_text, :class => "submit" %>
+		</li>
+	</ol>
+</fieldset>

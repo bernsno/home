@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   
   # NAMED SCOPES
   named_scope :active, :conditions => { :active => true }
+  named_scope :inactive, :conditions => { :active => false }
   named_scope :by_created_at, :order => "created_at DESC"
   
   # CALLBACKS
@@ -57,11 +58,11 @@ class User < ActiveRecord::Base
 
   private
 
-    def normalize_openid_identifier
-      begin
-        self.openid_identifier = OpenIdAuthentication.normalize_url(openid_identifier) if !openid_identifier.blank?
-      rescue OpenIdAuthentication::InvalidOpenId => e
-        errors.add(:openid_identifier, e.message)
-      end
+  def normalize_openid_identifier
+    begin
+      self.openid_identifier = OpenIdAuthentication.normalize_url(openid_identifier) if !openid_identifier.blank?
+    rescue OpenIdAuthentication::InvalidOpenId => e
+      errors.add(:openid_identifier, e.message)
     end
+  end
 end

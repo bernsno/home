@@ -1,48 +1,54 @@
-<% if @user.openid_identifier.blank? %>
-  <p>
-    <b>Login:</b>
-    <%=h @user.email %>
-  </p>
-<% else %>
-  <p>
-    <b>OpenID:</b>
-    <%=h @user.openid_identifier %>
-  </p>
-<% end %>
-<p>
-  <b>Email:</b>
-  <%=h @user.email %>
+<h4><%=h @user.email %></h4>
+
+<ul class="admin_content_body">
+	<li>
+		<h5>OpenID:</h5>
+		<p>
+			<%=h @user.openid_identifier %>
+		</p>
+	</li>
+	<li>
+		<h5>Login count:</h5>
+		<p>
+			<%=h @user.login_count %>
+		</p>
+	</li>
+	<li>
+		<h5>Last request at:</h5>
+		<p>
+			<%=h @user.last_request_at %>
+		</p>
+	</li>
+	<li>
+		<h5>Last login at:</h5>
+		<p>
+			<%=h @user.last_login_at %>
+		</p>
+	</li>
+	<li>
+		<h5>Current login at:</h5>
+		<p>
+			<%=h @user.current_login_at %>
+		</p>
+	</li>
+	<li>
+		<h5>Last login ip:</h5>
+		<p>
+			<%=h @user.last_login_ip %>
+		</p>
+	</li>
+	<li>
+		<h5>Current login ip:</h5>
+		<p>
+			<%=h @user.current_login_ip %>
+		</p>
+	</li>
+</ul>
+
+<p class="show_actions">
+	<% if @user == current_user %>
+		<%=link_to "edit", edit_admin_user_path(@user) %>
+	<% end %>
+	<%=link_to "delete", admin_user_path(@user), :confirm => 'Are you sure?', :method => :delete %>
+	<%=link_to "back", admin_users_path %>
 </p>
-
-<p>
-  <b>Login count:</b>
-  <%=h @user.login_count %>
-</p>
-
-<p>
-  <b>Last request at:</b>
-  <%=h @user.last_request_at %>
-</p>
-
-<p>
-  <b>Last login at:</b>
-  <%=h @user.last_login_at %>
-</p>
-
-<p>
-  <b>Current login at:</b>
-  <%=h @user.current_login_at %>
-</p>
-
-<p>
-  <b>Last login ip:</b>
-  <%=h @user.last_login_ip %>
-</p>
-
-<p>
-  <b>Current login ip:</b>
-  <%=h @user.current_login_ip %>
-</p>
-
-
-<%= link_to 'Edit', edit_admin_account_path %>
