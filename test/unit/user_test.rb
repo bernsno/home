@@ -2,6 +2,9 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class UserTest < ActiveSupport::TestCase
 
+  # MASS ASSIGNMENT
+  should_protect_attributes :active
+
   # AUTHLOGIC
   should_be_authentic
 
@@ -19,6 +22,7 @@ class UserTest < ActiveSupport::TestCase
   
   # NAMED SCOPES
   should_have_named_scope :active, :conditions => { :active => true }
+  should_have_named_scope :inactive, :conditions => { :active => false }
   should_have_named_scope :by_created_at, :order => "created_at DESC"
 
 end

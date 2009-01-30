@@ -34,11 +34,11 @@ class User < ActiveRecord::Base
   
   # Conditionals for authlogic configuration
   def openid_identifier_blank?
-    openid_identifier.blank?
+    self.openid_identifier.blank?
   end
   
   def has_no_credentials?
-    self.crypted_password.blank? && self.openid_identifier.blank?
+    self.crypted_password.blank? && openid_identifier_blank?
   end
   
   # Email notifications
