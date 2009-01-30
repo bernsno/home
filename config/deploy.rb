@@ -77,16 +77,24 @@ require 'capistrano/ext/multistage'
     run "mkdir -p #{shared_path}/uploaded_files"
 
     # Create database configuration
-    template = File.read(File.dirname(__FILE__) + "/database.yml.example")
-    result   = ERB.new(template).result(binding)
-    put result, "#{shared_path}/config/database.yml"
-    puts "Please edit database.yml to set up the database."
+    unless File.exist?("#{shared_path}/config/database.yml")
+      template = File.read(File.dirname(__FILE__) + "/database.yml.example")
+      result   = ERB.new(template).result(binding)
+      put result, "#{shared_path}/config/database.yml"
+      puts "Please edit database.yml to set up the database."
+    else
+      puts "The database.yml file already exists."
+    end
     
     # Create application configuration
-    template = File.read(File.dirname(__FILE__) + "/application.yml.example")
-    result   = ERB.new(template).result(binding)
-    put result, "#{shared_path}/config/application.yml"
-    puts "Please edit application.yml to set up the app configuration."
+    unless File.exist?("#{shared_path}/config/application.yml")
+      template = File.read(File.dirname(__FILE__) + "/application.yml.example")
+      result   = ERB.new(template).result(binding)
+      put result, "#{shared_path}/config/application.yml"
+      puts "Please edit application.yml to set up the app configuration."
+    else
+      puts "The application.yml file already exists."
+    end
   end
   after "deploy:setup", "create_shared_config"
 
