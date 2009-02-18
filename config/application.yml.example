@@ -1,7 +1,8 @@
 defaults: &defaults
   admin_email: matthooks@gmail.com
   site_name: Eden
-  google_analytics: fake_string
+  google_analytics:
+  analytics_in_admin: false
 
 development:
   <<: *defaults
@@ -9,8 +10,8 @@ development:
 
 test:
   <<: *defaults
-  site_host: localhost:3000
+  site_host: localhost:3000  
 
 production:
   <<: *defaults
-  site_host: application.com
+  site_host: localhost:3000

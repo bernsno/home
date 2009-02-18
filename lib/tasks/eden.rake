@@ -29,8 +29,6 @@ namespace :eden do
     puts ":secret => #{@secret}"
   end
   
-  
-  # Should this also make the db?
   desc "Creates a database.yml file with default mysql setup."
   task :setup_database_yml do
     require 'erb'
