@@ -7,9 +7,8 @@
 		<title><%= Settings.site_name %> Admin</title>
 		
 		<%= stylesheet_link_tag 'reset', 'rails_errors', 'admin' %>
-		<%#= google_jquery %>
-
-		<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+		<%= google_jquery %>
+		<%= auth_token %>
 		<%= yield :head %>
 		
 		<link rel="shortcut icon" href="/favicon.ico" />
@@ -17,8 +16,13 @@
 	<body class="<%= body_class %>">
 		
 		<div id="page_wrap">
+			<%= flash_helper %>
 			<%= yield %>
 		</div>
+
+		<% unless Settings.google_analytics.blank? || Settings.analytics_in_admin == false %>
+			<%= render :partial => "shared/google_analytics" %>
+		<% end %>
 
 	</body>
 </html>
