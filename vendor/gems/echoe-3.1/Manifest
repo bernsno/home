@@ -1,0 +1,13 @@
+CHANGELOG
+echoe.gemspec
+lib/echoe/client.rb
+lib/echoe/extensions.rb
+lib/echoe/platform.rb
+lib/echoe/rubygems.rb
+lib/echoe.rb
+LICENSE
+Manifest
+MIT-LICENSE
+Rakefile
+README
+TODO
