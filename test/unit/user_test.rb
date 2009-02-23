@@ -3,7 +3,8 @@ require File.dirname(__FILE__) + '/../test_helper'
 class UserTest < ActiveSupport::TestCase
 
   # MASS ASSIGNMENT
-  should_protect_attributes :active
+  should_allow_mass_assignment_of :email, :password, :password_confirmation, :openid_identifier
+  should_not_allow_mass_assignment_of :active
 
   # AUTHLOGIC
   should_be_authentic
