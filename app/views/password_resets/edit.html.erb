@@ -1,12 +1,21 @@
-<h1>Change My Password</h1>
-
 <% form_for @user, :url => password_reset_path, :method => :put do |f| %>
-  <%= f.error_messages %>
-  <%= f.label :password %><br />
-  <%= f.password_field :password %><br />
-  <br />
-  <%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %><br />
-  <br />
-  <%= f.submit "Update my password and log me in" %>
+	<%= f.error_messages %>
+	<fieldset>
+		<p>
+			Enter a new password to complete your password reset.
+		</p>
+		<ol>
+			<li>
+				<%= f.label :password, "New password" %>
+				<%= f.password_field :password %>
+			</li>
+			<li>
+				<%= f.label :password_confirmation, "Verify your new password" %>
+				<%= f.password_field :password_confirmation %>
+			</li>
+			<li class="submit">
+				<%= f.submit "Reset my password &raquo;", :class => "submit" %>
+			</li>
+		</ol>
+	</fieldset>
 <% end %>
