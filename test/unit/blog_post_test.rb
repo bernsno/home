@@ -7,7 +7,6 @@ class BlogPostTest < ActiveSupport::TestCase
 
 	# ASSOCATIONS
 
-
 	# NAMED SCOPES
 	should_have_named_scope :publishable, :conditions => {:publish => true}
 
@@ -25,7 +24,6 @@ class BlogPostTest < ActiveSupport::TestCase
 	
 	# PAPERCLIP
 	should_have_attached_file :image
-	# should_validate_attachment_content_type :image, :valid => "image/png"
 	should_validate_attachment_size :image, :in => 1..BlogPost::UPLOAD_LIMIT.megabytes
 
 end
