@@ -9,7 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081124103134) do
+ActiveRecord::Schema.define(:version => 20090223085229) do
+
+  create_table "accounts", :force => true do |t|
+    t.string   "subdomain"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accounts", ["subdomain"], :name => "index_accounts_on_subdomain", :unique => true
 
   create_table "open_id_authentication_associations", :force => true do |t|
     t.integer "issued"
