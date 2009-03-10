@@ -1,3 +1,3 @@
-# set(:user) { "REPLACE_ME" }
-# set(:domain) { "REPLACE_ME" }
-# ssh_options[:port] = REPLACE_ME
+set(:user) { "noah" }
+set(:domain) { "bernsno.com" }
+ssh_options[:port] = 45000
