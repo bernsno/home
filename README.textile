@@ -11,15 +11,16 @@ Tutorial coming soon. Check out lib/thor/eden.thor if you know how to use thor.
 h2. Vendored Plugins (submodules)
 
 # "newrelic_rpm":http://github.com/smtlaissezfaire/newrelic_rpm
-# "paperclip":http://github.com/thoughtbot/paperclip
 # "google_ajax_api":http://github.com/rpheath/google_ajax_libraries_api
 # "hoptoad_notifier":http://github.com/thoughtbot/hoptoad_notifier
+# "open_id_authentication":http://github.com/rails/open_id_authentication/tree/master
 
 h2. Gem Plugins
 
 # "ryanb-acts-as-list":http://github.com/ryanb/acts-as-list/tree/master
 # "thoughtbot-shoulda":http://github.com/thoughtbot/shoulda/tree/master
 # "thoughtbot-factory_girl":http://github.com/thoughtbot/factory_girl/tree/master
+# "thoughtbot-paperclip":http://github.com/thoughtbot/paperclip
 # "mislav-will_paginate":http://github.com/mislav/will_paginate/tree/master
 # "capistrano-ext":http://github.com/jamis/capistrano-ext/tree/master
 # "authlogic":http://github.com/binarylogic/authlogic
