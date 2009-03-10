@@ -19,6 +19,19 @@ ActiveRecord::Schema.define(:version => 20090223085229) do
 
   add_index "accounts", ["subdomain"], :name => "index_accounts_on_subdomain", :unique => true
 
+  create_table "blog_posts", :force => true do |t|
+    t.string   "title"
+    t.text     "intro"
+    t.text     "body"
+    t.boolean  "publish"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "open_id_authentication_associations", :force => true do |t|
     t.integer "issued"
     t.integer "lifetime"
@@ -29,16 +42,16 @@ ActiveRecord::Schema.define(:version => 20090223085229) do
   end
 
   create_table "open_id_authentication_nonces", :force => true do |t|
-    t.integer "timestamp",                  :null => false
+    t.integer "timestamp",  :null => false
     t.string  "server_url"
-    t.string  "salt",       :default => "", :null => false
+    t.string  "salt",       :null => false
   end
 
   create_table "users", :force => true do |t|
     t.string   "email",             :default => "",    :null => false
     t.string   "crypted_password"
     t.string   "password_salt"
-    t.string   "persistence_token", :default => "",    :null => false
+    t.string   "persistence_token",                    :null => false
     t.integer  "login_count",       :default => 0,     :null => false
     t.datetime "last_request_at"
     t.datetime "last_login_at"
