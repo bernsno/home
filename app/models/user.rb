@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   end
   
   def has_no_credentials?
-    self.crypted_password.blank? && openid_identifier_blank?
+    self.crypted_password.blank? && self.openid_identifier_blank?
   end
   
   # Email notifications
@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
 
   def normalize_openid_identifier
     begin
-      self.openid_identifier = OpenIdAuthentication.normalize_url(openid_identifier) if !openid_identifier.blank?
+      self.openid_identifier = OpenIdAuthentication.normalize_identifier(openid_identifier) if !openid_identifier.blank?
     rescue OpenIdAuthentication::InvalidOpenId => e
       errors.add(:openid_identifier, e.message)
     end
