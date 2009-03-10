@@ -1,0 +1,17 @@
+defaults: &defaults
+  admin_email: bernsno@gmail.com
+  site_name: Bernsno
+  google_analytics:
+  analytics_in_admin: false
+
+development:
+  <<: *defaults
+  site_host: localhost:3000
+
+test:
+  <<: *defaults
+  site_host: localhost:3000  
+
+production:
+  <<: *defaults
+  site_host: localhost:3000
