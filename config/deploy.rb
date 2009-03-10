@@ -9,7 +9,7 @@ require 'capistrano/ext/multistage'
 
   ### REPLACE ME ###
   set :application, "bernsno.com"
-  set :repository,  "github.repository"
+  set :repository,  "git@github.com:bernsno/home.git"
 
 ##### SOURCE CONTROL #####
   set :scm, "git"
