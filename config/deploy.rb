@@ -8,7 +8,7 @@ require 'capistrano/ext/multistage'
 ##### APPLICATION #####
 
   ### REPLACE ME ###
-  set :application, "domain.com"
+  set :application, "bernsno.com"
   set :repository,  "github.repository"
 
 ##### SOURCE CONTROL #####
