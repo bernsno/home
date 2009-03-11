@@ -13,7 +13,7 @@ class BlogPostTest < ActiveSupport::TestCase
 	# INSTANCE METHODS
 	context "a valid blog post" do
 		setup { @blog_post = Factory(:blog_post) }
-
+		
 		should "parameterize title" do
 			assert_equal @blog_post.to_param, "#{@blog_post.id}-#{@blog_post.title.parameterize}"
 		end

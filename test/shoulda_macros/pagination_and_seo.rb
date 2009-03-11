@@ -1,16 +1,4 @@
 module OneDesign
-
-	# def should_parameterize(field)
-	# 	klass = model_class
-	# 	context "should parameterize" do
-	# 		setup do
-	# 			@object = get_instance_of(klass)
-	# 		end
-	# 		should "find id and title for params" do
-	# 			assert_equal @object.to_param, "#{@object.object_id}-#{@object.send(field).parameterize}"
-	# 		end
-	# 	end
-	# end
 	
 	def should_have_per_page(count) 
 		klass = model_class
