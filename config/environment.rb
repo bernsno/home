@@ -21,17 +21,6 @@ Rails::Initializer.run do |config|
 
   # gem tasks are loaded in the Rakefile
 
-  # Load factories
-  config.after_initialize do
-    %w(test spec).each do |dir|
-      factories = File.join(RAILS_ROOT, dir, 'factories.rb')
-      require factories if File.exists?(factories)
-      Dir[File.join(RAILS_ROOT, dir, 'factories', '*.rb')].each do |file|
-        require file
-      end
-    end  
-  end
-
   # Session
   # Thanks Blank (http://github.com/giraffesoft/blank/tree/)
   session_config = "#{RAILS_ROOT}/config/session.rb"

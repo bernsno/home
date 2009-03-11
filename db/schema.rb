@@ -11,6 +11,14 @@
 
 ActiveRecord::Schema.define(:version => 20090310045503) do
 
+  create_table "accounts", :force => true do |t|
+    t.string   "subdomain"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accounts", ["subdomain"], :name => "index_accounts_on_subdomain", :unique => true
+
   create_table "blog_posts", :force => true do |t|
     t.string   "title"
     t.text     "intro"

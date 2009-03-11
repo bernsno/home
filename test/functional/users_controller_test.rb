@@ -1,46 +1,44 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
 
-# TODO: Use shoulda to make some real tests
 class UsersControllerTest < ActionController::TestCase
-  # test "should get index" do
-  #   get :index
-  #   assert_response :success
-  #   assert_not_nil assigns(:users)
-  # end
-  # 
-  # test "should get new" do
-  #   get :new
-  #   assert_response :success
-  # end
-  # 
-  # test "should create user" do
-  #   assert_difference('User.count') do
-  #     post :create, :user => { }
-  #   end
-  # 
-  #   assert_redirected_to user_path(assigns(:user))
-  # end
-  # 
-  # test "should show user" do
-  #   get :show, :id => users(:one).id
-  #   assert_response :success
-  # end
-  # 
-  # test "should get edit" do
-  #   get :edit, :id => users(:one).id
-  #   assert_response :success
-  # end
-  # 
-  # test "should update user" do
-  #   put :update, :id => users(:one).id, :user => { }
-  #   assert_redirected_to user_path(assigns(:user))
-  # end
-  # 
-  # test "should destroy user" do
-  #   assert_difference('User.count', -1) do
-  #     delete :destroy, :id => users(:one).id
-  #   end
-  # 
-  #   assert_redirected_to users_path
-  # end
+
+  context "GET to :new" do
+    setup { get :new }
+    should_render_template 'new'
+    should_respond_with :success
+    should_assign_to :user
+  end
+
+  context "POST to :create" do
+    setup { post :create, :user => Factory.attributes_for(:inactive_user) }
+    should_assign_to :user
+    should_change 'User.count', :by => 1
+    should_redirect_to 'root_path'
+  end
+  
+  # TODO: Better way to test before_filter?
+  context "a logged in user" do
+    setup do
+      fake_login
+    end
+
+    context "GET to :new" do
+      setup { get :new }
+      should_set_the_flash_to /log out/
+      should_redirect_to "admin_user_url(@current_user)"
+      should "assign a return_to" do
+        assert session[:return_to]
+      end
+    end
+
+    context "POST to :create" do
+      setup { post :create, :user => Factory.attributes_for(:user) }
+      should_set_the_flash_to /log out/
+      should_redirect_to "admin_user_url(@current_user)"
+      should "assign a return_to" do
+        assert session[:return_to]
+      end
+    end
+  end
+
 end
