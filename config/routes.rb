@@ -13,10 +13,14 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'user_sessions', :action => 'new'
   map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
 
+	# Public
+	map.resources :blog_posts
+	
   # Admin
   map.namespace :admin do |admin|
     admin.resources :users
-    
+    admin.resources :blog_posts
+
     admin.root :controller => "users"
   end
 

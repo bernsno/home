@@ -1,0 +1,32 @@
+<%= f.error_messages %>
+<fieldset>
+	<legend><%= header_text %> Blog Post</legend>
+	<ol>
+		<li>
+			<%= f.label :title %>
+			<%= f.text_field :title %>
+		</li>
+		<li>
+			<%= f.label :intro %>
+			<%= f.text_area :intro, :rows => 5 %>
+		</li>
+		<li>
+			<%= f.label :body %>
+			<%= f.text_area :body, :rows => 20 %>
+		</li>
+		<li>
+			<%= f.label :publish_date %>
+			<%= f.datetime_select :publish_date %>
+			<small>This blog post will be published on this date.</small>
+		</li>
+		<li>
+			<%= f.label :publish, "Publish?", :class => "checkbox" %>
+			<%= f.check_box :publish %>
+			<small>This blog post will only appear if this box is checked.</small>
+		</li>
+		<li class="submit">
+			<%=link_to "All Blog Posts", admin_blog_posts_path, :class => "cancel" %>
+			<%= f.submit button_text %>
+		</li>
+	</ol>
+</fieldset>

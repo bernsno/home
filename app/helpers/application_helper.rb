@@ -24,5 +24,18 @@ module ApplicationHelper
       content_tag(tag, html_escape(fl.last), :class => "#{fl.first} flash")
     end
   end
+
+	def zebra_striped_row(id=nil, options = {})
+	  concat("<tr class=\"#{cycle('odd', 'even', :name => options[:name])}\" id=\"#{id}\">")
+	  yield
+	  concat("</tr>")
+  end
+
+  def icon_link(path, image, text, options = {})
+		options.reverse_merge!(:class => 'icon_link')
+    link_to path, options do
+      image_tag(image) + content_tag(:span, h(text))
+    end
+  end
   
 end

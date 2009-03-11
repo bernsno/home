@@ -1,0 +1,10 @@
+<div class="blog_post_show">
+	<div class="blog_post_header">
+		<h2><%=link_to @blog_post.title, blog_post_path(@blog_post) %></h2>
+		<h3><span class="publish_date"><%= @blog_post.publish_date %></h3>
+	</div>
+	<div class="blog_post_content">
+		<%=simple_format sanitize(@blog_post.intro) %>
+		<%=simple_format sanitize(@blog_post.body) %>
+	</div>
+</div>

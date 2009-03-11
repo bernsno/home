@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090310045503) do
+ActiveRecord::Schema.define(:version => 20090311034725) do
 
   create_table "accounts", :force => true do |t|
     t.string   "subdomain"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20090310045503) do
     t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "publish_date"
   end
 
   create_table "open_id_authentication_associations", :force => true do |t|

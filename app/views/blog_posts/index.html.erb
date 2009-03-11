@@ -1,0 +1,16 @@
+<ul id="blog_post_index">
+	<% @blog_posts.each do |blog_post| %>
+	<li class="blog_post">
+		<div class="blog_post_header">
+			<h2><%=link_to blog_post.title, blog_post_path(blog_post) %></h2>
+			<h3><span class="publish_date"><%= blog_post.publish_date %></h3>
+		</div>
+		<div class="blog_post_intro">
+			<%=simple_format sanitize(blog_post.intro) %>
+		</div>
+		<div class="blog_actions">
+			<%=link_to "read more", blog_post_path(blog_post) %>
+		</div>
+	</li>
+	<% end %>
+</ul>

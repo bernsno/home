@@ -1,5 +1,5 @@
 class BlogPost < ActiveRecord::Base
-
+	
 	UPLOAD_LIMIT = 5
 	
   # VALIDATIONS
@@ -8,7 +8,10 @@ class BlogPost < ActiveRecord::Base
 	# ASSOCIATIONS
 	
 	# NAMED SCOPES
+	# TODO: How to handle publish bool and publish date
 	named_scope :publishable, :conditions => { :publish => true }
+	named_scope :by_publish_date, :order => "publish_date DESC"
+	
 	
 	# PAPERCLIP
 	has_attached_file :image,
@@ -34,3 +37,16 @@ class BlogPost < ActiveRecord::Base
   end
 
 end
+
+# GENERAL BLOG TODOS:
+
+# TODO: RSS/ATOM FEED
+# TODO: PERMALINKS?
+# TODO: PUBLISH DATE
+# TODO: SHARE THIS
+# TODO: **COMMENTS**
+
+# BLOG PREFERENCES
+# PER PAGE
+# *COMMENTS*
+# IMAGE SIZES

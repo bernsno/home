@@ -1,0 +1,27 @@
+<h2>
+	Blog Posts
+</h2>
+
+<table cellspacing="0">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Publish Date</th>
+			<th>Active</th>
+			<th class="actions"><%=link_to "New", new_admin_blog_post_path %></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @blog_posts.each do |blog_post| %>
+			<% zebra_striped_row do %>
+				<td><%=link_to blog_post.title, edit_admin_blog_post_path(blog_post) %></td>
+				<td><%= blog_post.publish_date.strftime('%B %e, %Y (%l:%M %p)') %></td>
+				<td><%= blog_post.publish %></td>
+				<td class="actions">
+					<%=link_to "Edit", edit_admin_blog_post_path(blog_post) %><!--
+					--><%=link_to "Delete", admin_blog_post_path(blog_post), :confirm => "Are you sure?", :method => :delete %>
+				</td>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>

@@ -1,0 +1,6 @@
+<h2>Blog Post</h2>
+<p class="actions"><%= link_to 'Back', admin_blog_posts_path %></p>
+
+<% form_for(:blog_post, :url => admin_blog_posts_path, :html => { :multipart => true}) do |f| %>
+	<%= render :partial => "form", :locals => { :f => f, :button_text => "Create", :header_text => "New" } %>
+<% end %>

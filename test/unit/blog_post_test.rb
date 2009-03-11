@@ -8,7 +8,8 @@ class BlogPostTest < ActiveSupport::TestCase
 	# ASSOCATIONS
 
 	# NAMED SCOPES
-	should_have_named_scope :publishable, :conditions => {:publish => true}
+	should_have_named_scope :publishable, :conditions => { :publish => true }
+	should_have_named_scope :by_publish_date, :order => "publish_date DESC"
 
 	# INSTANCE METHODS
 	context "a valid blog post" do
