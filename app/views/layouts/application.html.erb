@@ -12,6 +12,7 @@
 		<%= yield :head %>
 		
 		<link rel="shortcut icon" href="/favicon.ico" />
+		<%= auto_discovery_link_tag(:rss, {:controller => :blog_posts, :action => 'index'}) %>
 	</head>
 	<body class="<%= body_class %>">
 		
