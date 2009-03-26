@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090311034725) do
+ActiveRecord::Schema.define(:version => 20090321050101) do
 
   create_table "accounts", :force => true do |t|
     t.string   "subdomain"
@@ -46,6 +46,25 @@ ActiveRecord::Schema.define(:version => 20090311034725) do
     t.integer "timestamp",  :null => false
     t.string  "server_url"
     t.string  "salt",       :null => false
+  end
+
+  create_table "portfolio_pieces", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "portfolio_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "portfolios", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
